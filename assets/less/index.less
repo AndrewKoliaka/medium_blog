@@ -7,14 +7,18 @@ body {
 
 p,
 li {
-    font-family: 'Charter', 'Times', sans-serif;
+    font-family: 'charterregular', 'Times', sans-serif;
     font-weight: 400;
+}
+
+b {
+    font-family: 'charterbold', sans-serif;
 }
 
 p,
 li {
     font-size: 20px;
-    color: darken(#666666, 5%);
+    color: darken(#666666, 10%);
 }
 
 p,
@@ -101,4 +105,15 @@ footer {
 
 .icon-clap-hands {
     font-size: 30px;
+    border: thin solid gray;
+
+    &--small {
+        border: none;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    p, li {
+        font-size: 18px;
+    }
 }
