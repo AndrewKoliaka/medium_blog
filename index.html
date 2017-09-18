@@ -1,13 +1,455 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Progressive Web Apps with React.js: Part 1 - Introduction</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+        crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/main.css">
 </head>
+
 <body>
+    <nav class="top-navbar navbar fixed-top navbar-expand navbar-light bg-white">
+        <div class="container">
+            <a class="logo icon-logo navbar-brand mx-md-auto mx-lg-auto mx-xl-auto" href="#"></a>
+            <div class="navbar-nav float-right">
+                <a class="nav-link text-success" href="#" title="sign in">Sign in</a>
+                <div class="navbar-text text-success">/</div>
+                <a class="nav-link text-success" href="#" title="sign up">Sign up</a>
+            </div>
+        </div>
+    </nav>
+
+    <nav class="bottom-navbar navbar fixed-bottom navbar-expand navbar-light bg-white">
+        <div class="container justify-content-center">
+            <img class="rounded-circle float-left" height="40" src="assets/images/avatar1.png" alt="Addy Osmani">
+            <div class="col-lg-6 col-md-8">
+                <div class="">Never miss a story from <b>Addy Osmani</b><span class="d-none d-md-inline">, when you sign up for Medium. <a class="text-success" href="#">Learn more</a></span></div>
+            </div>
+            <button type="button" class="get-updates btn btn-success btn-sm float-right py-2 px-3 font-weight-bold text-uppercase">Get updates</button>
+
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="row justify-content-center">
+            <div class="float-left text-center">
+                <img class="rounded-circle" height="70" src="assets/images/avatar1.png" alt="Addy Osmani">
+            </div>
+            <div class="col-7 ml-1">
+                <div class="row">
+                    <h6>Addy Osmani</h6>
+                    <button class="follow-btn follow-btn--small btn btn-outline-success btn-sm ml-3" type="button">Follow</button>
+                </div>
+                <div class="row">
+                    <small class="text-secondary">Senior Staff Engineer at Google working with the Chrome team. Creator of TodoMVC, Yeoman, Material
+                                                Design Lite, Web Starter Kit </small>
+                </div>
+                <div class="row">
+                    <small class="text-secondary">Oct 4, 2016 &#8226; 8 min read</small>
+                </div>
+            </div>
+        </div>
+
+        <article>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h1 class="font-weight-bold mt-4">Progressive Web Apps with React.js: Part I — Introduction</h1>
+                    <p class="text-secondary h4">Progressive Web Apps take advantage of new technologies to bring the best of mobile sites & native apps
+                        to users. They’re reliable, fast, and engaging. They originate from a secure origin and load regardless
+                        of network state.
+                    </p>
+                    <img class="img-fluid my-4" src="assets/images/img8.png">
+                    <p>There’s much new in the world of <a href="#">Progressive Web Apps</a> (PWAs) and you might be wondering
+                        how compatible they are with existing architectures using libraries like <a href="#">React</a> and
+                        JS module bundlers like
+                        <a href="#">Webpack</a>. Does a PWA require a wholesale rewrite? What web performance metrics do
+                        you need to keep an eye on? In this series of posts I’ll share my experience turning React-based
+                        web apps into PWAs. We’ll also cover why shipping just what users need for a route & throwing out
+                        all other scripts are good ideas for fast perf.</p>
+                </div>
+            </div>
+
+            <section class="mt-5">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <h2 class="font-weight-bold">Lighthouse</h2>
+                        <p>Let’s begin with a PWA checklist. For this we’ll be using <a href="#" class="font-weight-bold">Lighthouse</a> — a
+                            tool for auditing <a href="#">an app for PWA features</a> and checking your app meets a respectable
+                            bar for web performance under emulated mobile conditions. Lighthouse is available as a <a href="#">Chrome extension</a>                            (I use this version of it most often) and a <a href="#">CLI</a>, both of which present a report
+                            that looks a little like this:</p>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <figure class="figure">
+                        <img class="figure-img img-fluid col-12" src="assets/images/img5.jpg">
+                        <figcaption class="figure-caption text-center"><small>Results from the Lighthouse Chrome extension</small></figcaption>
+                    </figure>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <p>The top-level audits Lighthouse runs effectively a collection of modern web best practices refined
+                            for a mobile world:</p>
+                        <ul>
+                            <li class="mt-3"><b>Network connection is secure</b></li>
+                            <li class="mt-3"><b>User can be prompted to Add to Homescreen</b></li>
+                            <li class="mt-3"><b>Installed web app will launch with custom splash screen</b></li>
+                            <li class="mt-3"><b>App can load on offline/flaky connections</b></li>
+                            <li class="mt-3"><b>Page load performance is fast</b></li>
+                            <li class="mt-3"><b>Design is mobile-friendly</b></li>
+                            <li class="mt-3"><b>Site is progressively enhanced</b></li>
+                            <li class="mt-3"><b>Address bar matches brand colors</b></li>
+                        </ul>
+                        <p>Btw, there’s a <a href="#">getting started guide</a> for Lighthouse and it also works over <a href="#">remote debugging</a>.
+                            Super cool.</p>
+                        <p>Regardless of what libraries are in your stack, I want to emphasize that everything in the above
+                            list can be accomplished today with a little work. There are caveats however.</p>
+                        <p><b>We know the mobile web is <a href="#">slow</a>.</b></p>
+                        <p>The web has evolved from a document-centric platform to a first-class application platform. At the
+                            same time the bulk of our computing has moved from powerful desktop machines with fast, reliable
+                            network connections to relatively underpowered mobile devices with connections that are often
+                            <i>slow, flaky or both</i>. This is especially true in parts of the world where the next billion
+                            users are coming online. To unlock a faster mobile web:
+                        </p>
+                        <ul>
+                            <li><b>We need to collectively shift to testing on real mobile devices under realistic network connections</b>                                (e.g <a href="#">Regular 3G in DevTools</a>). <a href="#">chrome://inspect</a> and <a href="#">WebPageTest</a>                                (<a href="#">video</a>) are your friend. Lighthouse emulates a Nexus 5X with touch events,
+                                viewport emulation and a throttled network connection (150ms latency, 1.6Mbps throughput).</li>
+                            <li class="mt-4"><b>If the JS libraries you’re using aren’t developed with mobile in mind, you may be running an uphill battle for perf</b>                                when it comes to being interactive. We’re ideally aiming for being interactive in under 5
+                                seconds on a representative device so more of that budget for our app code is ❤
+                            </li>
+                        </ul>
+                        <figure class="figure mt-4">
+                            <img class="figure-img img-fluid" src="assets/images/img9.png">
+                            <figcaption class="figure-caption">
+                                <small>
+                                        With some work, it’s possible to write PWAs with React that do perform well on real devices under limited network conditions <a href="#">as demonstrated by Housing.com</a>. We’ll talk about how to achieve this in great <b>detail</b> later on in the series.
+                                </small>
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+                <div class="row justify-content-end mt-4">
+                    <div class="col-lg-8">
+                        <p>
+                            That said, this is an area many libraries are working to improve on and may need to if they’re going to stay viable for performance
+                            on physical devices.
+                            <mark>Just take a look at the A+ job <a href="#">Preact</a> is doing on <a href="#">perf with real-world devices.</a></mark>
+                        </p>
+                    </div>
+                    <div class="col-lg-2 d-none d-lg-block">
+                        <a href="#"><small class="text-secondary">Top highlight</small></a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <p><b>Open-source React Progressive Web App samples</b></p>
+                        <img class="img-fluid" src="assets/images/img3.png">
+                        <p class="mt-4"><i>If you’re after relatively non-trivial examples of PWAs built with React and optimized with Lighthouse, you may be interested in: <a href="#">ReactHN</a> — a HackerNews client with server-side rendering & offline support or <a href="#">iFixit</a> — a hardware repair guide built with React but which uses Redux for state management.</i></p>
+                        <p class="mt-4">Let’s now walk through what we need to do to check off each item in the Lighthouse report, continuing
+                            with React.js specific tips throughout the series.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mt-5">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <h2 class="font-weight-bold">Network connection is secure</h2>
+                        <h5 class="font-weight-bold mt-4">Tooling and tips for HTTPS</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <img class="img-fluid" src="assets/images/img11.jpeg">
+                    </div>
+                    <div class="col-lg-4 d-none d-lg-block">
+                        <p>
+                            <a href="#">HTTPS</a> prevents bad-actors from tampering with communications between your app
+                            and the browser your users are using and you might have read that Google is pushing to <a href="#">shame</a>                            sites that are unencrypted. Powerful
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <p>
+                            <span class="d-lg-none"><a href="#">HTTPS</a> prevents bad-actors from tampering with communications between your app and the browser your users are using and you might have read that Google is pushing to <a href="#">shame</a> sites that are unencrypted. Powerful </span>
+                            <span>new web platform APIs, like <a href="#">Service Worker</a>, <a href="#">require</a> secure origins via HTTPS but the good news is thanks to services like <a href="#">LetsEncrypt</a> providing free <a href="#">SSL certificates</a> and low-cost options like <a href="#">Cloudflare</a> enabling end-to-end traffic encryption <a href="#">for all</a>, it’s never been more straight-forward to get this setup.</span>
+                        </p>
+                        <p>
+                            For my personal projects, I usually deploy to <a href="#">Google App Engine</a> which supports
+                            serving SSL traffic through an appspot.com domain if you add the ‘secure’ parameter to your app.yaml
+                            file. For my React apps that need Node.js support for Universal Rendering, I use <a href="#">Node on App Engine</a>.
+                            <a href="#">Github Pages</a> and Zeit.co also now support HTTPS.
+                        </p>
+                        <img class="img-fluid mt-4" src="assets/images/img6.jpg">
+                        <p class="mt-4">
+                            <i>
+                                    The <a href="#">Chrome DevTools Security panel</a> allows you to validate issues with security certificates and mixed content errors.
+                            </i>
+                        </p>
+                        <p class="mt-4">Some more tips to get your site more secure:</p>
+                        <ul>
+                            <li class="mt-3">Upgrade unsecure requests (“HTTP” connections) to “HTTPS” redirecting users as needed. Take a
+                                look at <a href="#">Content Security Policy</a> and <a href="#">upgrade-insecure-requests</a>.
+                            </li>
+                            <li class="mt-3">Update all links referencing “http://” to “https://”. If you rely on third-party scripts or content,
+                                talk to them about making their resources available over HTTPS too</li>
+                            <li class="mt-3">Use HTTP <a href="#">Strict Transport Security</a> (HSTS) headers when serving pages. It’s a
+                                directive that forces browsers to only talk to your site in HTTPS.</li>
+                        </ul>
+                        <p>I’d recommend watching <a href="#">Deploying HTTPS: The Green Lock and Beyond</a> and <a href="#">Mythbusting HTTPS: Squashing security’s urban legends</a>                            for more.</p>
+                    </div>
+                </div>
+            </section>
+            <section class="mt-5">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <h2 class="font-weight-bold">User can be prompted to Add to Homescreen</h2>
+                        <p>Next up is customizing the “<a href="#">add to homescreen</a>” experience for your app (favicons,
+                            application name displayed, orientation and more). This is achieved by adding a <a href="#">Web Application Manifest</a>.
+                            I usually find customizing cross-browser (and OS) favicons to involve the most work here, but
+                            tools like <a href="#">realfavicongenerator.net</a> take a lot of the pain out of the experience.
+                        </p>
+                        <img class="img-fluid my-4" src="assets/images/img2.png">
+                        <p>There’s been much discussion on the “minimum” number of favicons a site needs to just work in most
+                            places. Lighthouse <a href="#">have proposed</a> shipping a 192px icon for the homescreen icon
+                            and a 512px one for your splashscreen. I personally stick with the output from realfavicongenerator
+                            as despite it involving more metatags, I prefer the assurance my bases are all covered.</p>
+                        <p class="mt-4">Some sites may prefer to ship a highly customized favicon per platform. I recommend checking out
+                            <a href="#">Designing a Progressive Web App</a> icon for more guidance on this topic.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-12 my-4">
+                        <img class="img-fluid" src="assets/images/img10.png">
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-12">
+                        <p>
+                            With a Web App manifest setup, you also get access to app installer banners, giving you a way to natively prompt for users
+                            to install your PWA if they find themselves engaging with it often. It’s also possible to defer
+                            the prompt until a time when a user has a useful interaction with your app. Flipkart found the
+                            best time to show the prompt was on their order confirmation page.
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <p>
+                            <a href="#"><i>The Chrome DevTools Application Panel</i></a> supports inspecting your Web App
+                            Manifest via Application > Manifest:
+                        </p>
+                        <img class="img-fluid my-4" src="assets/images/img1.jpg">
+                        <p>This parses out the favicons listed in your manifest and previews properties like the start URL and
+                            theme colors. Btw, there’s a Totally Tooling Tips episode on Web App Manifests if interested
+                            ;)
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <section class="mt-5">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <h2 class="font-weight-bold">
+                            Installed web app will launch with custom splash screen
+                        </h2>
+                        <p>
+                            In older versions of Chrome for Android, tapping on a homescreen icon for an app would often take up to 200ms (or multiple
+                            seconds in slow sites) for the first frame of the document to be rendered to the screen.
+                        </p>
+                        <p class="mt-4">
+                            During this time, the user would see a white screen, decreasing the perceived performance of your site. Chrome 47 and above
+                            <a href="#">support customising a splash screen</a> (based on a background_color, name and icons
+                            from the Web App Manifest) used to color the screen until the browser is ready to paint something.
+                            This makes your webapp feel a lot closer to “native”.
+
+                        </p>
+                        <img class="img-fluid my-4" src="assets/images/img7.jpg">
+                        <p><a href="#">Realfavicongenerator.net</a> also now supports previewing and customising the Splashscreen
+                            for your manifest, a handy time saver.</p>
+                        <p class="mt-4"><i>Note: Firefox for Android and Opera for Android also support the Web Application Manifest, Splash screen and an add to homescreen experience. On iOS, Safari still supports customising add to <a href="#">homescreen icons</a> and used to support a <a href="#">proprietary splashscreen</a> implementation, however this appears to have broken in iOS9. I’ve filed a feature request for Webkit to support the Web App Manifest so.. fingers crossed I guess.</i></p>
+                    </div>
+                </div>
+            </section>
+            <section class="mt-5">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <h2 class="font-weight-bold">Design is mobile-friendly</h2>
+                        <p>
+                            Apps optimized for multiple devices should include a <a href="#">meta-viewport in the &lt;head&gt; of their document</a>.
+                            This might seem super obvious, but I’ve seen plenty of React projects where folks have neglected
+                            to include this. Thankfully create-react-app does include a valid meta-viewport by default and
+                            Lighthouse will flag if it is missing:
+                        </p>
+                        <code class="text-dark d-block my-4">
+                            &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+                        </code>
+                        <p>
+                            Although we focus heavily on optimizing the mobile web experience in Progressive Web Apps, this
+                            <a href="#">doesn’t mean desktop should be forgotten</a>. A well-crafted PWA can work well across
+                            a range of viewport sizes, browsers and devices, as demonstrated by Housing.com:
+                        </p>
+                    </div>
+                    <div class="col-lg-10 mx-auto my-4">
+                        <img class="img-fluid" src="assets/images/img4.jpg">
+                    </div>
+                    <div class="col-lg-8 mx-auto">
+                        <p>
+                            In Part 2 of the series, we’ll look at <a href="#"><b>page-load performance with React and Webpack</b></a>.
+                            We’ll dive into code-splitting, route-based chunking and the PRPL pattern for reaching interactivity
+                            sooner.
+                        </p>
+                        <p class="my-4">If you’re new to React, I’ve found React for Beginners by Wes Bos excellent.</p>
+                        <p><i>With thanks to Gray Norton, Sean Larkin, Sunil Pai, Max Stoiber, Simon Boudrias, Kyle Mathews and Owen Campbell-Moore for their reviews.</i></p>
+                        <small class="text-secondary">Thanks to Owen Campbell-Moore and <a href="#">Max Stoiber</a>.</small>
+
+                    </div>
+                    <div class="col-lg-8 mx-auto mt-4">
+                        <button type="button" class="btn btn-light btn-sm">Web Development</button>
+                        <button type="button" class="btn btn-light btn-sm">Mobile</button>
+                        <button type="button" class="btn btn-light btn-sm">Progressive Web App</button>
+                        <button type="button" class="btn btn-light btn-sm">React</button>
+                        <button type="button" class="btn btn-light btn-sm">JavaScript</button>
+                        <hr class="mt-4">
+                    </div>
+                </div>
+            </section>
+            <section class="mt-2">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <h4>Show your support</h4>
+                        <p class="text-secondary mb-4">Clapping shows how much you appreciated Addy Osmani’s story.</p>
+                        <div class="float-left">
+                            <a class="icon-clap-hands rounded-circle p-3" href="#" style="border: thin solid black;"></a>
+                            <a class="text-secondary ml-2" href="#"><small>2.6K</small></a>
+                        </div>
+                        <div class="float-right">
+                            <ul class="list-inline">
+                                <li class="list-inline-item"><a class="icon-comment" href="#"></a></li>
+                                <li class="list-inline-item"><a class="undecorated" href="#"><small>22</small></a></li>
+                                <li class="list-inline-item"><a class="icon-twitter" href="#"></a></li>
+                                <li class="list-inline-item"><a class="icon-facebook-square" href="#"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-8 mx-auto">
+                        <hr>
+                    </div>
+                </div>
+                <div class="row justify-content-center mb-4">
+                    <div class="float-left ml-4">
+                        <img class="rounded-circle" height="70" src="assets/images/avatar1.png" alt="Addy Osmani">
+                    </div>
+                    <div class="col-6 ml-2">
+                        <div class="row">
+                            <h5><a class="text-dark font-weight-bold" href="#">Addy Osmani</a></h5>
+                        </div>
+                        <div class="row">
+                            <small class="text-success">Medium member since Mar 2017</small>
+                        </div>
+                        <div class="row">
+                            <small class="text-secondary">Senior Staff Engineer at Google working with the Chrome team • Creator of TodoMVC, Yeoman, Material Design Lite, Web Starter Kit • Passionate about web tooling</small>
+                        </div>
+                    </div>
+                    <div class="float-right">
+                        <button class="follow-btn btn btn-outline-success float-right mr-4" type="button">Follow</button>
+                    </div>
+                </div>
+            </section>
+        </article>
+    </main>
+    <footer class="bg-light">
+        <div class="container">
+            <div class="row pt-5">
+                <div class="col-lg-4 mx-auto">
+                    <div class="card mt-md-3">
+                        <a class="card-img-top card-img-top--1" href="#"></a>
+                        <div class="card-body">
+                            <h6 class="card-subtitle text-muted mb-2">More from Addy Osmani</h6>
+                            <h4 class="card-title font-weight-bold">Progressive Web App Libraries in Production</h4>
+                            <div class="row mt-4">
+                                <div class="col-1">
+                                    <img class="rounded-circle" height="40" src="assets/images/avatar1.png" alt="Addy Osmani">
+                                </div>
+                                <div class="col-5 ml-3">
+                                    <h6 class="my-0">Addy Osmani</h6>
+                                    <small class="text-muted">10 min read</small>
+                                </div>
+                                <div class="col-5 text-right">
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item"><a class="icon-clap-hands" href="#"></a></li>
+                                        <li class="list-inline-item"><small class="text-muted">1.1K</small></li>
+                                        <li class="list-inline-item"><a class="icon-bookmark text-muted" href="#"></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mx-auto">
+                    <div class="card mt-md-3">
+                        <a class="card-img-top card-img-top--2" href="#"></a>
+                        <div class="card-body">
+                            <h6 class="card-subtitle text-muted mb-2">Related reads</h6>
+                            <h4 class="card-title font-weight-bold">Twitter Lite and High Performace</h4>
+                            <div class="row mt-4">
+                                <div class="col-1">
+                                    <img class="rounded-circle" height="40" src="assets/images/avatar2.png" alt="Paul Armstorng">
+                                </div>
+                                <div class="col-5 ml-3">
+                                    <h6 class="my-0">Paul Armstorng</h6>
+                                    <small class="text-muted">23 min read</small>
+                                </div>
+                                <div class="col-5 text-right">
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item"><a class="icon-clap-hands" href="#"></a></li>
+                                        <li class="list-inline-item"><small class="text-muted">768</small></li>
+                                        <li class="list-inline-item"><a class="icon-bookmark text-muted" href="#"></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mx-auto">
+                    <div class="card mt-md-3">
+                        <a class="card-img-top card-img-top--3" href="#"></a>
+                        <div class="card-body">
+                            <h6 class="card-subtitle text-muted mb-2">More from Addy Osmani</h6>
+                            <h4 class="card-title font-weight-bold">Angular vs React vs Vue. 2017 Comparison</h4>
+                            <div class="row mt-4">
+                                <div class="col-1">
+                                    <img class="rounded-circle" height="40" src="assets/images/avatar1.png" alt="Addy Osmani">
+                                </div>
+                                <div class="col-5 ml-3">
+                                    <h6 class="my-0">Addy Osmani</h6>
+                                    <small class="text-muted">10 min read</small>
+                                </div>
+                                <div class="col-5 text-right">
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item"><a class="icon-clap-hands" href="#"></a></li>
+                                        <li class="list-inline-item"><small class="text-muted">3.9K</small></li>
+                                        <li class="list-inline-item"><a class="icon-bookmark text-muted" href="#"></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-8 mx-auto mt-5">
+                    <h6><b>Responses</b></h6>
+                    <div class="bg-white border rounded py-5 px-4 mt-3">
+                        <a class="text-muted" href="#"><span class="icon-comment"></span> Write a response...</a>
+                    </div>
+
+                    <a class="d-block border rounded p-4 mt-5 bg-white text-center text-success" href="#">Show all responses</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
+
 </html>

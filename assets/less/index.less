@@ -1,0 +1,100 @@
+@import 'fonts.less';
+@import 'icons.less';
+
+// base styles
+body {
+    padding-top: 100px;
+}
+
+p,
+li {
+    font-family: 'Charter', 'Times', sans-serif;
+    font-weight: 400;
+}
+
+p,
+li {
+    font-size: 20px;
+    color: darken(#666666, 5%);
+}
+
+p,
+li,
+small {
+    a {
+        color: inherit;
+        text-decoration: underline;
+        &:hover {
+            color: inherit;
+        }
+    }
+}
+
+mark {
+    background-color: rgba(39, 243, 106, .1);
+}
+
+footer {
+    padding-bottom: 100px;
+    a:hover {
+        text-decoration: none;
+    }
+}
+
+// bootstrap
+.top-navbar {
+    opacity: .95;
+    border-bottom: thin solid whitesmoke;
+}
+
+.bottom-navbar {
+    box-shadow: 0 -3px 10px 0 rgba(0, 0, 0, .0785);
+}
+
+.card-img-top {
+    height: 100px;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    border-bottom: thin solid gray;
+    &--1 {
+        background-image: url('../images/article1.png');
+    }
+    &--2 {
+        background-image: url('../images/article2.png');
+    }
+    &--3 {
+        background-image: url('../images/article3.png');
+    }
+}
+
+// my classes
+.undecorated {
+    text-decoration: none;
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+.follow-btn {
+    border-radius: 15px;
+    font-size: 13px;
+    &--small {
+        font-size: 12px;
+        font-weight: 600;
+        height: 20px;
+        padding: 0 8px;
+    }
+}
+
+.get-updates {
+    border-radius: 15px;
+    font-size: .8em;
+}
+
+.logo {
+    font-size: 3em;
+}
+
+.icon-clap-hands {
+    font-size: 30px;
+}
